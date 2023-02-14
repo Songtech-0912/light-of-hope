@@ -1,0 +1,19 @@
+/* Fonts */
+$font-sans: Inter, Avenir, Helvetica, sans-serif;
+$font-serif: Baskervville, Georgia, Times New Roman, serif;
+
+/* Colors */
+
+$bg-color-0: #252627;
+$bg-color-1: #292A2D;
+$bg-color-3: #3e3f44;
+$bg-color-2: #8E8E8E;
+$tx-color-1: #E5E9F0;
+$tx-color-2: #999999;
+$accent-color-1: #22AB69;
+
+/* Shadows */
+@mixin soft-shadow() {
+    // Thanks to: https://medium.com/@markbrehaut/how-to-quickly-create-a-diffused-shadow-effect-with-css-sass-and-less-4339c7668d69
+    box-shadow: 13px 13px 21px -10px rgba(0, 0, 0, 0.3);
+}

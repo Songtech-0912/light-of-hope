@@ -1,0 +1,118 @@
+/* Light of Hope stylesheet, using Sass */
+
+@import "utils";
+@import "icons";
+@import "variables";
+@import "components";
+@import "about-page";
+
+/* General style resets */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $font-sans;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25rem;
+  @include center-x;
+  background: $bg-color-0;
+  color: $tx-color-1;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+// Add glow focus effect on button focus for a11y
+button {
+  background: none;
+  border: none;
+}
+
+section {
+  padding: 2rem 0;
+  background: $bg-color-1;
+
+  .container {
+    @include center-x;
+    width: 75%;
+  }
+}
+
+nav {
+  @include center-x;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+
+  a {
+    color: $tx-color-1;
+    text-decoration: none;
+    margin: auto 0;
+  }
+}
+
+header {
+  display: flex;
+  padding-top: 10rem;
+  padding-bottom: 5rem;
+
+  img {
+    @include center-x;
+  }
+}
+
+.poems {
+  display: flex;
+  flex-grow: 1;
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 8%;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      // align-content: center;
+      max-width: 30%;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+
+      article {
+        @include center-x;
+      }
+
+      label {
+        font-family: $font-sans;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
+        color: $tx-color-2;
+        margin-bottom: 0.8rem;
+      }
+
+      p {
+        font-size: 1.125rem;
+        font-family: $font-serif;
+      }
+
+    }
+
+  }
+}

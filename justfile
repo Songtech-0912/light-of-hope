@@ -1,0 +1,15 @@
+# shows this
+default:
+    @just -l
+
+# run sass in dev mode
+dev:
+    ./tools/dart-sass/sass --watch scss/index.scss style.css
+
+# server
+serve:
+    python3 -m http.server
+
+# run sass in release mode
+build:
+  ./tools/dart-sass/sass scss/index.scss style.css

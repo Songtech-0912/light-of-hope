@@ -1,0 +1,58 @@
+@import "variables";
+
+$toggle-width: 2rem;
+$toggle-height: calc($toggle-width / 2);
+
+.toggle-container {
+    display: flex;
+    column-gap: 0.5rem;
+    align-content: center;
+}
+
+.toggle {
+    margin: auto;
+    position: relative;
+    display: inline-block;
+    width: $toggle-width;
+    height: $toggle-height;
+
+    input {
+        display: none;
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: currentColor;
+        transition: 0.4s;
+        border-radius: $toggle-width;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: calc($toggle-width / 3);
+        width: calc($toggle-width / 3);
+        left: calc(1rem / 6);
+        bottom: calc(1rem / 6);
+        background-color: $bg-color-1;
+        transition: .4s;
+        border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: $accent-color-1;
+    }
+
+    input:checked + .slider:before {
+        background-color: white;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(calc($toggle-width / 2));
+    }
+}

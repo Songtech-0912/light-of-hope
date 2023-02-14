@@ -1,0 +1,30 @@
+#player-progressbar {
+    .range {
+        position: relative;
+        height: 4px;
+        background: $bg-color-2;
+        border-radius: 0.25rem;
+    }
+
+    .range:focus {
+        outline: none;
+        box-shadow: 0 0 1px 1px lighten($accent-color-1, 30%);
+    }
+
+    .range-bar {
+        background: $accent-color-1;
+        border-radius: 0.25rem;
+        height: 0.25rem;
+    }
+
+    .range-handle {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        margin: -6px 0 0 -6px;
+        background: $accent-color-1;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+    }
+}

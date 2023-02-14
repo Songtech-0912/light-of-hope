@@ -1,0 +1,49 @@
+$icon-size: 1.5rem;
+
+.icon {
+    display: block;
+    padding-left: $icon-size;
+    width: $icon-size;
+    height: $icon-size;
+}
+
+.icon:before {
+    content: "";
+    position: absolute;
+    width: $icon-size;
+    height: $icon-size;
+    margin-left: -$icon-size;
+}
+
+
+.icon-theme::before {
+    background: url("icons/theme.svg")
+}
+
+.icon-download::before {
+    background: url("icons/download.svg")
+}
+
+.icon-play:before {
+    background: url("icons/play.svg")
+}
+
+.icon-pause:before {
+    background: url("icons/pause.svg");
+}
+
+.icon-play-prev:before {
+    background: url("icons/play-prev.svg");
+}
+
+.icon-play-next:before {
+    background: url("icons/play-next.svg");
+}
+
+.icon-loop:before {
+    background: url("icons/loop.svg");
+}
+
+.icon-loop-active:before {
+    background: url("icons/loop-active.svg");
+}

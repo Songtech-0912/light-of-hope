@@ -1,0 +1,32 @@
+@import "variables";
+// Taken from: https://codepen.io/cbracco/pen/nXEQLw
+
+/* Position tooltip above the element */
+.tooltip {
+  display: inline-block;
+  text-align: center;
+  position: absolute;
+  z-index: 2;
+  padding: 0.5rem;
+  width: 7.5rem;
+  border-radius: 0.25rem;
+  background-color: $bg-color-3;
+  color: $tx-color-1;
+  font-size: 0.8rem;
+  text-align: center;
+  line-height: 1.2;
+  @include soft-shadow;
+}
+
+/* Show tooltip content on hover + focus */
+// [data-tooltip]:hover:before,
+// [data-tooltip]:hover:after {
+//   visibility: visible;
+//   opacity: 1;
+// }
+// 
+// [data-tooltip]:focus:before,
+// [data-tooltip]:focus:after {
+//   visibility: visible;
+//   opacity: 1;
+// }

@@ -1,0 +1,38 @@
+// Thanks to: https://www.sonahangrai.com/tutorials/responsive-web-design-with-sass/
+
+@mixin xsm {
+  @media screen and (max-width: ($xsm)) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media screen and (max-width: ($sm)) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media screen and (max-width: ($md)) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media screen and (max-width: ($lg)) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media screen and (max-width: ($xl)) {
+    @content;
+  }
+}
+
+//For Extra Extra Large
+@mixin xxl {
+  @media screen and (max-width: ($xxl)) {
+    @content;
+  }
+}

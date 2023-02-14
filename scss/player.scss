@@ -1,0 +1,34 @@
+/*
+
+All styles for audio player
+
+<div id="player-progressbar">
+    <div class="progress">
+        <div id="bar"></div>
+    </div>
+    <button>Run bar</button>
+</div>
+
+*/
+
+@import "variables";
+@import "progressbar";
+
+.player-container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    row-gap: 1.5rem;
+
+    label[for="player-progressbar"] {
+        margin: auto;
+    }
+}
+
+.player-controls {
+    margin: 0 auto;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
