@@ -116,6 +116,9 @@ Range.prototype.set_start = function() {
 // Graceful degradation: shows default browser media player when javascript is disabled/does not load
 const audio = $("#audio");
 audio.style.display = "none";
+// Default settings
+audio.loop = false
+audio.autoplay = true
 
 const player = $(".player-container");
 const player_title = $("#player-title");
@@ -314,4 +317,7 @@ $(".player-controls").addEventListener("click", (event) => {
 })
 
 audio.addEventListener('timeupdate', update_progress);
+if (audio.autoplay) {
+  audio.addEventListener('ended', next_song);
+}
 player_progressbar.addEventListener('click', set_progress);
