@@ -13,3 +13,7 @@ serve:
 # run sass in release mode
 build:
   ./tools/dart-sass/sass scss/index.scss style.css
+
+# generate songs and poems database
+gen:
+    python3 db-generator.py
