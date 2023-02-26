@@ -17,10 +17,12 @@ songs = {}
 poems = {}
 
 for song in song_src_path.iterdir():
+    print(f"Processing song {str(song)}")
     song_name = song.stem
     songs[song_name] = str(song)
 
 for poem in poem_src_path.iterdir():
+    print(f"Processing poem {str(poem)}")
     poem_index = poem.stem
     poem_contents = poem.open().read()
     # split poem contents into Commandian
