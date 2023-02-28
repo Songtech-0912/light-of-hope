@@ -5,6 +5,7 @@
 @import "variables";
 @import "components";
 @import "about-page";
+@import "screens";
 
 /* General style resets */
 
@@ -52,7 +53,10 @@ section {
 
 nav {
   @include center-x;
-  width: 50%;
+  width: 40%;
+  @include lg { width: 65%; }
+  @include sm { width: 80%; }
+  @include xsm { width: 90%; }
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -82,6 +86,7 @@ header {
   .container {
     display: flex;
     flex-direction: row;
+    @include md { flex-direction: column; }
     justify-content: center;
     column-gap: 8%;
 
@@ -91,6 +96,10 @@ header {
       justify-content: start;
       // align-content: center;
       max-width: 30%;
+      @include md {
+        max-width: 70%;
+        margin: auto;
+      }
       padding-top: 2rem;
       padding-bottom: 2rem;
 

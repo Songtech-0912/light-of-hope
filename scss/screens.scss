@@ -1,5 +1,12 @@
 // Thanks to: https://www.sonahangrai.com/tutorials/responsive-web-design-with-sass/
 
+$xsm: 480px;
+$sm: 640px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1280px;
+$xxl: 1536px;
+
 @mixin xsm {
   @media screen and (max-width: ($xsm)) {
     @content;
