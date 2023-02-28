@@ -178,51 +178,45 @@ function update_progress(e) {
     progressbar.rangeHandle.style.left = parseInt(percent) + "%";
 }
 
-// Referenced from https://tutorialspoint.com/function-to-choose-elements-randomly-in-javascript
-function choose_random(arr, num = 1) {
-   const res = [];
-   for(let i = 0; i < num; ){
-      const random = Math.floor(Math.random() * arr.length);
-      if(res.indexOf(arr[random]) !== -1){
-         continue;
-      };
-      res.push(arr[random]);
-      i++;
-   };
-   return res;
-};
+function randrange(min, max) { // min and max included
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
 
 // Create progress bar
 let progressbar = new Range(player_progressbar);
 
 // Load random song
 let songs = Object.keys(songs_list);
-let current_song = choose_random(songs)[0];
-let index = songs.indexOf(current_song)
+let index = randrange(0, songs.length - 1);
+let current_song = songs[index];
+
 load_song(songs_list[current_song]);
 
 // Load random poem
 let poems = Object.keys(poems_list);
-let current_poem = choose_random(poems)[0];
+let poem_index = randrange(0, poems.length - 1);
+let current_poem = poems[poem_index];
 load_poem(poems_list[current_poem])
 
 // Reference: https://egghead.io/lessons/react-cycle-through-an-array-of-values-with-the-modulus-operator
 function prev_song() {
-    pause_song()
-    index--;
     current_song = songs[(index - 1 + songs.length) % songs.length];
     console.log(`Playing previous song ${songs_list[current_song]}`)
     load_song(songs_list[current_song])
     progressbar.set_start();
+    index--;
+    play_btn.querySelector("i.icon").classList.remove("icon-play");
+    play_btn.querySelector("i.icon").classList.add("icon-pause");
 }
 
 function next_song() {
-    pause_song()
-    index++;
     current_song = songs[(index + 1) % songs.length];
     console.log(`Playing next song ${songs_list[current_song]}`)
     load_song(songs_list[current_song])
     progressbar.set_start();
+    index++;
+    play_btn.querySelector("i.icon").classList.remove("icon-play");
+    play_btn.querySelector("i.icon").classList.add("icon-pause");
 }
 
 function handle_play() {
@@ -261,10 +255,10 @@ function handle_loop() {
 function handle_autoplay() {
     if (autoplay_btn.checked == true) {
         console.log("Autoplay ON");
-        audio.autoplay == true;
+        audio.dataset.autoplay == true;
     } else {
         console.log("Autoplay OFF");
-        audio.autoplay == false
+        audio.dataset.autoplay == false
     }
 }
 
@@ -317,7 +311,7 @@ $(".player-controls").addEventListener("click", (event) => {
 })
 
 audio.addEventListener('timeupdate', update_progress);
-if (audio.autoplay) {
+if (audio.dataset.autoplay) {
   audio.addEventListener('ended', next_song);
 }
 player_progressbar.addEventListener('click', set_progress);
