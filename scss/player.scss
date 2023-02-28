@@ -31,6 +31,7 @@ All styles for audio player
     width: 50%;
     @include lg { width: 60%; }
     @include md { width: 75%; }
+    @include sm { width: 90%; }
     display: flex;
     flex-direction: row;
     justify-content: space-between;

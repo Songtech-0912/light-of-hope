@@ -168,6 +168,11 @@ All styles for audio player
     width: 75%;
   }
 }
+@media screen and (max-width: 640px) {
+  .player-controls {
+    width: 90%;
+  }
+}
 
 /* Fonts */
 /* Colors */
