@@ -28,7 +28,7 @@ All styles for audio player
 
 .player-controls {
     margin: 0 auto;
-    width: 50%;
+    width: 40%;
     @include lg { width: 60%; }
     @include md { width: 75%; }
     @include sm { width: 90%; }
