@@ -11,5 +11,9 @@ const poems_list = {
     "1": [
         "The Lord is my shepherd; I shall not want.\nHe makes me lie down in green pastures.\nHe leads me beside still waters.\nHe restores my soul.\nHe leads me in paths of righteousness.\nEven though I walk through the valley of the shadow of death,\nI will fear no evil,\nfor you are with me;\nyour rod and your staff,\nthey comfort me.\n",
         "An\u00edr\u00edn min t\u00ebn\u00e1l, min l\u00fcm\u00edn ner\u00f6n;\nT\u00e9lim min and\u00f9n l\u00e9 ten\u00eb vin,\nT\u00e9lim min n\u00e9ran, vala\u00eb gen\u00fcv\u00ecel,\nT\u00e9lim min finw\u00eb l\u00e9 num\u00e1r n\u00ebrim,\nT\u00e9lim min il\u00ebm\u00edn v\u00e4n\u00e8.\n\nC\u00e4n min eh\u00e4n\u00eb l\u00f6hirim n\u00e1mh\u00e4n\u00e8,\nMin l\u00e1n ul\u00f9n h\u00e4n\u00e8,\n\u00c1l nim l\u00e9 min;\nNim n\u00e9l n\u00fal nim eren\u00fal,\nH\u00e4nlim min gild\u00e4n\u00eb.\n"
+    ],
+    "2": [
+        "Look up into the night sky,\ntilt your eyes to the heavens:\nlight, racing from star to star,\ntravelers from a distant home,\nvisitors to an alien sky,\nsailors of the cosmos, awaiting\nfor us to beckon them home,\nall this, for us to see -\nour inheritance from the universe.\n",
+        "Nes\u00e8 s\u00e9l\u00f3r n\u00e9r\u00f6rim,\neh\u00e4n\u00eb nim e\u00edlin l\u00e4nd\u00far\u00edl:\nast\u00f3r, eh\u00e4ne \u00e4l\u00e9 \u00e4l\u00e9,\neh\u00e4ne\u00ecn n\u00e9re in\u00e8 nur\u00edl est\u00e0,\neh\u00e4ne\u00ecn n\u00e9re in\u00e8 h\u00edr\u00e1n n\u00e9r\u00f6rim,\nqena\u00ecn n\u00e9re land\u00far\u00edl, niml\u00e8\n\u00e1l f\u00e4\u00e8 d\u00fale\u00e1n h\u00e4nlim est\u00e0,\nl\u00e9re, \u00e1l f\u00e4\u00e8 e\u00edlin -\nf\u00e4\u00e8 as\u00e8 l\u00e4nd\u00far\u00edl\n"
     ]
 };
