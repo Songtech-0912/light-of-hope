@@ -24,7 +24,7 @@
                 <a href="https://github.com/Songtech-0912/light-of-hope">GitHub</a>
                 <!-- Redirects to docs/ folder on GitHub -->
                 <a href="https://github.com/Songtech-0912/light-of-hope/tree/main/docs/">Docs</a>
-                <a href="#" class="theme-toggle">
+                <a aria-label="Toggle theme (does not work right now)" href="#" class="theme-toggle">
                     <i class="icon icon-theme"></i>
                 </a>
             </nav>
@@ -37,32 +37,29 @@
                 </audio>
                 <div class="player-container">
                     <label id="player-title" for="player-progressbar">Currently playing: Light of Hope 1</label>
-                    <div id="player-progressbar">
+                    <div id="player-progressbar" tabindex="0">
                         <!--Markup dynamically generated via JS-->
                     </div>
                     <div class="player-controls">
-                        <div class="toggle-container">
+                        <div class="toggle-container" tabindex="0" aria-label="Toggle autoplay">
                             <p>Autoplay</p>
                             <label class="toggle" data-control id="autoplay">
-                                <input id="autoplay_btn" type="checkbox" checked>
-                                <!--very hacky way to prevent double events but it works
-                                    so don't change it please-->
-                                <span class="slider round" onclick="event.stopPropagation()"></span>
+                                <!--Markup dynamically generated via JS-->
                             </label>
                         </div>
-                        <button id="play-prev" data-control>
+                        <button aria-label="Play previous" id="play-prev" data-control>
                             <i class="icon icon-play-prev"></i>
                         </button>
-                        <button id="play" data-tooltip="Play/pause" data-control>
+                        <button aria-label="Play" id="play" data-tooltip="Play/pause" data-control>
                             <i class="icon icon-play"></i>
                         </button>
-                        <button id="play-next" data-control>
+                        <button aria-label="Play next" id="play-next" data-control>
                             <i class="icon icon-play-next"></i>
                         </button>
-                        <button id="loop" data-control>
+                        <button aria-label="Loop" id="loop" data-control>
                             <i class="icon icon-loop"></i>
                         </button>
-                        <button id="download" data-control>
+                        <button aria-label="Download song" id="download" data-control>
                             <i class="icon icon-download"></i>
                         </button>
                     </div>

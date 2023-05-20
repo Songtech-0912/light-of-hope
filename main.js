@@ -27,6 +27,21 @@ Element.prototype.appendAfter = function (element) {
   element.parentNode.insertBefore(this, element.nextSibling);
 },false;
 
+function nodeFromInnerHTML(markupString){
+    let tempParentElement = document.createElement("div");
+    tempParentElement.innerHTML = markupString;
+    let generatedHTMLElement = tempParentElement.firstElementChild;
+    return generatedHTMLElement
+}
+
+function AutoplayBtn(parent) {
+    let input = nodeFromInnerHTML(`<input id="autoplay_btn" type="checkbox" checked>`);
+    let slider = nodeFromInnerHTML(`<span class="slider round" onclick="event.stopPropagation()"></span>`);
+    this.input = input;
+    parent.appendChild(input);
+    parent.appendChild(slider);
+}
+
 // Thanks to https://codepen.io/crouchingtigerhiddenadam/pen/EoJWPq
 function Range(parent) {
   let percent = 0;
@@ -52,64 +67,16 @@ Range.prototype.set_start = function() {
     this.rangeHandle.style.left = "0%";
 }
 
-// Range.prototype.focus = function () {
-//   if (document.activeElement !== this.range) this.range.focus();
-// };
-
-// Range.prototype.keydown = function (event) {
-//   if (event.keyCode == 37) this.setPercent(this.percent - 1);
-//   else if (event.keyCode == 39) this.setPercent(this.percent + 1);
-// };
-
-// Range.prototype.mousedown = function (event) {
-//   var clientX = event.clientX;
-//   document.addEventListener("mousemove", this.mousemove, true);
-//   document.addEventListener("mouseup", this.mouseup, true);
-//   this.slide(clientX);
-// };
-
-// Range.prototype.mousemove = function (event) {
-//   var clientX = event.clientX;
-//   this.slide(clientX);
-// };
-
-// Range.prototype.mouseup = function (event) {
-//   document.removeEventListener("mousemove", this.mousemove, true);
-//   document.removeEventListener("mouseup", this.mouseup, true);
-// };
-
-// Range.prototype.slide = function (clientX) {
-//   var offsetX = clientX - this.rangeBar.getBoundingClientRect().left,
-//     percent = offsetX / this.range.clientWidth * 100;
-//   this.focus();
-//   this.setPercent(percent);
-//   set_progress();
-// };
-
-// Range.prototype.touchend = function (event) {
-//   document.removeEventListener("touchmove", this.touchmove, true);
-//   document.removeEventListener("touchend", this.touchend, true);
-// };
-
-// Range.prototype.touchmove = function (event) {
-//   var clientX = event.touches[0].clientX;
-//   this.slide(clientX);
-// };
-
-// Range.prototype.touchstart = function (event) {
-//   var clientX = event.touches[0].clientX;
-//   document.addEventListener("touchmove", this.touchmove, true);
-//   document.addEventListener("touchend", this.touchend, true);
-//   this.slide(clientX);
-// };
-
-// Range.prototype.setPercent = function (percent) {
-//   if (percent < 0) percent = 0;
-//   else if (percent > 100) percent = 100;
-//   this.rangeBar.style.width = parseInt(percent) + "%";
-//   this.rangeHandle.style.left = parseInt(percent) + "%";
-//   this.percent = percent;
-// };
+Range.prototype.setPercent = function (percent) {
+  if (percent < 0) percent = 0;
+  else if (percent > 100) percent = 100;
+  this.rangeBar.style.width = parseInt(percent) + "%";
+  this.rangeHandle.style.left = parseInt(percent) + "%";
+  this.percent = percent;
+  const duration = audio.duration;
+  audio.currentTime = percent / 100 * duration;
+  play_song();
+};
 
 // Main application code begins here
 
@@ -128,6 +95,8 @@ const play_next_btn = $("#play-next");
 const loop_btn = $("#loop");
 const download_btn = $("#download");
 const player_progressbar = $("#player-progressbar");
+const toggle_container = $(".toggle-container")
+const autoplay_container = $("#autoplay");
 const autoplay_btn = $("#autoplay_btn");
 const poem_english_container = $("#poem-english article");
 const poem_commandian_container = $("#poem-commandian article");
@@ -185,6 +154,22 @@ function randrange(min, max) { // min and max included
 // Create progress bar
 let progressbar = new Range(player_progressbar);
 
+player_progressbar.addEventListener("keydown", function(event){
+    if (event.keyCode == 37) progressbar.setPercent(progressbar.percent - 1);
+    else if (event.keyCode == 39) progressbar.setPercent(progressbar.percent + 1);
+    audio.currentTime = progressbar.percent / 100 * audio.duration;
+});
+
+// Create autoplay button
+let autoplay = new AutoplayBtn(autoplay_container);
+
+toggle_container.addEventListener("keydown", function(event) {
+    if (event.keyCode == 13) {
+        autoplay.input.checked = !autoplay.input.checked;
+        audio.autplay = audio.input.checked;
+    }
+})
+
 // Load random song
 let songs = Object.keys(songs_list);
 let index = randrange(0, songs.length - 1);
@@ -209,6 +194,12 @@ function prev_song() {
     play_btn.querySelector("i.icon").classList.add("icon-pause");
 }
 
+function load_next_poem() {
+    current_poem = poems[(poem_index + 1) % poems.length];
+    load_poem(poems_list[current_poem]);
+    poem_index++;
+}
+
 function next_song() {
     current_song = songs[(index + 1) % songs.length];
     console.log(`Playing next song ${songs_list[current_song]}`)
@@ -217,6 +208,8 @@ function next_song() {
     index++;
     play_btn.querySelector("i.icon").classList.remove("icon-play");
     play_btn.querySelector("i.icon").classList.add("icon-pause");
+    // Load next poem as well
+    load_next_poem();
 }
 
 function handle_play() {
