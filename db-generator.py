@@ -18,18 +18,20 @@ poems = {}
 
 for song in song_src_path.iterdir():
     print(f"Processing song {str(song)}")
-    song_name = song.stem
-    songs[song_name] = str(song)
+    if ".DS_Store" not in str(song):
+        song_name = song.stem
+        songs[song_name] = str(song)
 
 for poem in poem_src_path.iterdir():
     print(f"Processing poem {str(poem)}")
-    poem_index = poem.stem
-    poem_contents = poem.open().read()
-    # split poem contents into Commandian
-    # and english
-    poem_merged = poem_contents.split("---\n")
-    poem_merged = ["".join(contents) for contents in poem_merged]
-    poems[poem_index] = poem_merged
+    if ".DS_Store" not in str(poem):
+        poem_index = poem.stem
+        poem_contents = poem.open().read()
+        # split poem contents into Commandian
+        # and english
+        poem_merged = poem_contents.split("---\n")
+        poem_merged = ["".join(contents) for contents in poem_merged]
+        poems[poem_index] = poem_merged
 
 # Serialize to JSON
 songs_json = json.dumps(songs, indent=4)
