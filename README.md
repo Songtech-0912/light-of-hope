@@ -1,4 +1,6 @@
-# Light of Hope
+# Light of Hope (legacy)
+
+> **IMPORTANT NOTE:** This repository has been migrated to the open-source code forge [Codeberg](https://codeberg.org). The new repository is present [at this link](https://codeberg.org/songtech-0912/light-of-hope). This repository is **no longer maintained**.
 
 Light of Hope is a open-source initiative to produce high-quality, freely-available musical pieces for anyone to listen to.
 
